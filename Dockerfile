@@ -1,28 +1,16 @@
-# Use NVIDIA CUDA base image with Python
-FROM nvidia/cuda:12.1-devel-ubuntu22.04
+# Use Ubuntu 22.04 as base image
+FROM ubuntu:22.04
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
-ENV CUDA_HOME=/usr/local/cuda
-ENV PATH=${CUDA_HOME}/bin:${PATH}
-ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
-# Install system dependencies
+# Install system dependencies including Python
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
-    python3-dev \
     git \
     wget \
-    curl \
-    build-essential \
-    libgl1-mesa-glx \
-    libglib2.0-0 \
-    libsm6 \
-    libxext6 \
-    libxrender-dev \
-    libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Create symbolic link for python

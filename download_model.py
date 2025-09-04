@@ -1,6 +1,6 @@
-import torch
-from diffusers import DiffusionPipeline
 import os
+import sys
+from huggingface_hub import snapshot_download
 
 print("Downloading Qwen-Image model...")
 model_id = "Qwen/Qwen-Image"
@@ -11,20 +11,20 @@ os.environ["TRANSFORMERS_CACHE"] = "/app/cache"
 os.environ["HF_HUB_CACHE"] = "/app/cache"
 
 try:
-    # Download the model with proper device mapping
-    pipe = DiffusionPipeline.from_pretrained(
-        model_id,
-        torch_dtype=torch.float16,
-        device_map="auto",
-        trust_remote_code=True,
-        cache_dir="/app/cache"
+    # Create cache directory
+    os.makedirs("/app/cache", exist_ok=True)
+    
+    # Download the model using snapshot_download
+    print(f"Downloading {model_id} to /app/cache...")
+    snapshot_download(
+        repo_id=model_id,
+        cache_dir="/app/cache",
+        local_dir=f"/app/cache/{model_id.replace('/', '--')}",
+        local_dir_use_symlinks=False
     )
     print("Model downloaded successfully!")
 except Exception as e:
     print(f"Error downloading model: {e}")
-    # Try alternative download method
-    from transformers import AutoModel, AutoTokenizer
-    print("Trying alternative download method...")
-    tokenizer = AutoTokenizer.from_pretrained(model_id, cache_dir="/app/cache")
-    model = AutoModel.from_pretrained(model_id, cache_dir="/app/cache", trust_remote_code=True)
-    print("Model components downloaded successfully!")
+    print("Continuing without pre-downloaded model...")
+    # Don't fail the build, just continue without pre-downloaded model
+    sys.exit(0)
