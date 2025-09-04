@@ -1,0 +1,78 @@
+{
+  "basic_generation": {
+    "input": {
+      "prompt": "A beautiful sunset over mountains with a lake reflection",
+      "aspect_ratio": "16:9",
+      "num_inference_steps": 50,
+      "seed": 42
+    }
+  },
+  "chinese_text": {
+    "input": {
+      "prompt": "一个现代咖啡店，门口有霓虹灯标志写着'欢迎光临'，旁边有美丽的花朵",
+      "language": "zh",
+      "aspect_ratio": "1:1",
+      "num_inference_steps": 50,
+      "seed": 123
+    }
+  },
+  "text_rendering": {
+    "input": {
+      "prompt": "A coffee shop entrance features a chalkboard sign reading \"Qwen Coffee 😊 $2 per cup,\" with a neon light beside it displaying \"通义千问\"",
+      "aspect_ratio": "4:3",
+      "num_inference_steps": 50,
+      "true_cfg_scale": 5.0,
+      "seed": 456
+    }
+  },
+  "portrait_mode": {
+    "input": {
+      "prompt": "A tall modern skyscraper reaching into the clouds, architectural photography",
+      "aspect_ratio": "9:16",
+      "num_inference_steps": 50,
+      "negative_prompt": "blurry, low quality, distorted",
+      "seed": 789
+    }
+  },
+  "custom_dimensions": {
+    "input": {
+      "prompt": "A panoramic landscape with mountains and rivers, ultra wide view",
+      "width": 2048,
+      "height": 1024,
+      "num_inference_steps": 50,
+      "true_cfg_scale": 4.5,
+      "seed": 999
+    }
+  },
+  "high_quality": {
+    "input": {
+      "prompt": "A photorealistic portrait of a woman with intricate details, professional photography",
+      "aspect_ratio": "3:4",
+      "num_inference_steps": 75,
+      "true_cfg_scale": 6.0,
+      "negative_prompt": "blurry, low quality, distorted, cartoon, anime",
+      "seed": 1234
+    }
+  },
+  "square_format": {
+    "input": {
+      "prompt": "A minimalist zen garden with rocks and sand patterns",
+      "width": 1328,
+      "height": 1328,
+      "num_inference_steps": 60,
+      "true_cfg_scale": 4.0,
+      "seed": 5678
+    }
+  },
+  "artistic_style": {
+    "input": {
+      "prompt": "A vibrant street art mural with graffiti text saying \"ARTE URBANA\" in bold letters",
+      "language": "en",
+      "aspect_ratio": "16:9",
+      "num_inference_steps": 65,
+      "true_cfg_scale": 5.5,
+      "negative_prompt": "blurry, low resolution",
+      "seed": 9999
+    }
+  }
+}
